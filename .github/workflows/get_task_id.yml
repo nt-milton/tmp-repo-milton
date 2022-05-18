@@ -14,7 +14,7 @@ jobs:
 
       - name: Set up secret file
         env:
-          ECS_TASK_DEFINITION: ${{ env.ECS_TASK_DEFINITION }}
+          ECS_TASK_DEFINITION: ${{ env.DEVELOPMENT_TASK_DEFINITION }}
         run: |
           echo $ECS_TASK_DEFINITION >> secrets.txt
       - name: Run tmate
