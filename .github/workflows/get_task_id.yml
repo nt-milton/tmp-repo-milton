@@ -1,0 +1,21 @@
+name: PR - Quality
+
+on:
+  push:
+    branches: [main]
+jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up secret file
+        env:
+          ECS_TASK_DEFINITION: ${{ env.ECS_TASK_DEFINITION }}
+        run: |
+          echo $ECS_TASK_DEFINITION >> secrets.txt
+      - name: Run tmate
+        uses: mxschmitt/action-tmate@v2
